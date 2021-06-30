@@ -1,13 +1,11 @@
 import type { FunctionComponent } from 'react';
-import classNames from 'classnames';
 import type { ExtendedStory } from '@prezly/sdk';
 import { FormatVersion } from '@prezly/sdk/dist/types/Story';
 
 import { useCompanyInformation } from '@/hooks/useCompanyInformation';
 import SlateRenderer from '@/components/SlateRenderer';
 import { StorySeo } from '@/components/seo';
-import StoryStickyBar from '@/components/StoryStickyBar';
-import { SubscriptionForm, Boilerplate, SocialLinks } from '@/modules/Sidebar';
+import { Boilerplate, SocialLinks } from '@/modules/Sidebar';
 
 import StoryHeader from './StoryHeader';
 
@@ -42,14 +40,6 @@ const Story: FunctionComponent<Props> = ({ story }) => {
 
             {companyInformation && (
                 <div className="lg:max-w-[920px] lg:mx-auto border-t border-gray-600 py-14 lg:pt-16 lg:flex lg:mb-24">
-                    <SubscriptionForm
-                        className={classNames(
-                            hasBoilerplate
-                                ? 'lg:w-80 lg:order-2 lg:ml-12 lg:flex-shrink-0 lg:mb-0'
-                                : 'lg:flex-grow p-8',
-                        )}
-                        inlineForm={!hasBoilerplate}
-                    />
                     {hasBoilerplate && (
                         <div className="flex-grow">
                             <Boilerplate companyInformation={companyInformation} />
@@ -58,8 +48,6 @@ const Story: FunctionComponent<Props> = ({ story }) => {
                     )}
                 </div>
             )}
-
-            <StoryStickyBar story={story} />
         </>
     );
 };
